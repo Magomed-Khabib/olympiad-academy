@@ -7,3 +7,44 @@
 .auth-brand p{position:relative;z-index:1;font-weight:600;letter-spacing:.4px;}
 .sidebar .brand{width:100%;margin:0 0 30px;padding:0 6px;justify-content:center;letter-spacing:normal;}
 .sidebar-logo{display:block;width:100%;max-width:180px;height:auto;max-height:92px;object-fit:contain;border-radius:8px;}
+/* Мягкие закругления Olympiad Academy */
+:root {
+  --radius: 16px;
+}
+
+body {
+  background: #F4EFE6;
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 12px;
+}
+
+.card,
+.panel,
+.subject-card,
+.stat-card,
+.auth-card,
+.sidebar {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.card,
+.panel,
+.subject-card,
+.stat-card,
+.auth-card {
+  border: 1px solid #D9B56D;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
