@@ -36,3 +36,14 @@
   background: transparent !important;
 }
 
+
+/* Olympiad Academy — logo background fix */
+.auth-logo,
+.sidebar-logo {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
