@@ -48,3 +48,62 @@ button {
 button:hover {
   transform: translateY(-1px);
 }
+/* Olympiad Academy — мягкий премиальный интерфейс */
+:root {
+  --cream: #f5efe5;
+  --wine: #690b1b;
+  --wine-light: #841f32;
+  --gold: #d9b36b;
+  --gold-light: #ead5a5;
+  --ink: #30252a;
+}
+
+html {
+  background: var(--cream);
+}
+
+body {
+  background: var(--cream) !important;
+  color: var(--ink);
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 12px !important;
+}
+
+.card,
+.panel,
+.auth-card,
+.auth-wrap,
+.subject-card,
+.stat-card,
+.sidebar,
+.side-panel,
+section {
+  border-radius: 20px;
+}
+
+button {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #d8c8b1 !important;
+  background: #fffaf2 !important;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
