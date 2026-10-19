@@ -1,139 +1,49 @@
-
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#690b10">
-  <title>Olympiad Academy</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    /* Прозрачный логотип Olympiad Academy */
-    .auth-logo,
-    .sidebar-logo {
-      display: block;
-      background: transparent !important;
-      border: none !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      mix-blend-mode: multiply;
-      object-fit: contain;
-    }
-
-    .auth-logo {
-      width: min(100%, 440px);
-      height: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sidebar-logo {
-      width: 100%;
-      max-width: 180px;
-      max-height: 92px;
-      height: auto;
-    }
-
-    .auth-brand {
-      align-items: center;
-      text-align: center;
-    }
-
-    .sidebar .brand {
-      justify-content: center;
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#690b10"><title>Olympiad Academy</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="auth" class="auth-wrap">
-    <section class="auth-brand">
-      <img class="auth-logo" src="logo.png" alt="Olympiad Academy — золотая академическая эмблема">
-      <p>Знания. Развитие. Победы.</p>
-      <div class="mountain">▲</div>
-    </section>
-
-    <section class="auth-card">
-      <div class="eyebrow">АКАДЕМИЯ БУДУЩИХ ПОБЕДИТЕЛЕЙ</div>
-      <h1 id="authTitle">Вход в аккаунт</h1>
-      <p class="muted">Продолжай свой путь к новым достижениям.</p>
-
-      <div class="auth-switch">
-        <button class="switch active" id="loginSwitch">Войти</button>
-        <button class="switch" id="registerSwitch">Регистрация</button>
+<div id="auth" class="auth-wrap">
+  <section class="auth-brand"><img class="auth-logo" src="logo.png" alt="Olympiad Academy — золотая академическая эмблема"><p>Знания. Развитие. Победы.</p><div class="mountain">▲</div></section>
+  <section class="auth-card">
+    <div class="eyebrow">АКАДЕМИЯ БУДУЩИХ ПОБЕДИТЕЛЕЙ</div><h1 id="authTitle">Вход в аккаунт</h1><p class="muted">Продолжай свой путь к новым достижениям.</p>
+    <div class="auth-switch"><button class="switch active" id="loginSwitch">Войти</button><button class="switch" id="registerSwitch">Регистрация</button></div>
+    <form id="authForm">
+      <div id="registerFields" class="hidden">
+        <label>ФИО<input id="fullName" autocomplete="name" placeholder="Фамилия Имя Отчество"></label>
+        <div class="two"><label>Школа<input id="school" placeholder="Название школы"></label><label>Класс<input id="grade" placeholder="Например, 8"></label></div>
+        <label>Буква класса<input id="classLetter" maxlength="2" placeholder="Например, А"></label>
+        <label>Код участника<input id="participantCode" placeholder="Код выдаёт администратор"></label>
       </div>
-
-      <form id="authForm">
-        <div id="registerFields" class="hidden">
-          <label>ФИО<input id="fullName" autocomplete="name" placeholder="Фамилия Имя Отчество"></label>
-          <div class="two">
-            <label>Школа<input id="school" placeholder="Название школы"></label>
-            <label>Класс<input id="grade" placeholder="Например, 8"></label>
-          </div>
-          <label>Буква класса<input id="classLetter" maxlength="2" placeholder="Например, А"></label>
-          <label>Код участника<input id="participantCode" placeholder="Код выдаёт администратор"></label>
-        </div>
-
-        <label>Электронная почта
-          <input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
-        </label>
-
-        <label>Пароль
-          <input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Не менее 6 символов">
-        </label>
-
-        <div id="authError" class="error hidden"></div>
-        <button class="primary full" type="submit" id="authSubmit">Войти</button>
-      </form>
-
-      <p class="fine">Демо-версия: данные хранятся только в этом браузере. Для реальных аккаунтов потребуется серверная авторизация.</p>
-    </section>
-  </div>
-
-  <div id="app" class="app hidden">
-    <aside class="sidebar">
-      <div class="brand">
-        <img class="sidebar-logo" src="logo.png" alt="Olympiad Academy">
-      </div>
-
-      <nav id="nav">
-        <button class="nav-item active" data-tab="home">⌂ <span>Главная</span></button>
-        <button class="nav-item" data-tab="profile">◉ <span>Профиль</span></button>
-        <button class="nav-item" data-tab="subjects">▦ <span>Предметы</span></button>
-        <button class="nav-item" data-tab="ai">✧ <span>ИИ-помощник</span></button>
-        <button class="nav-item" data-tab="prep">♜ <span>Подготовка</span></button>
-        <button class="nav-item admin-only hidden" data-tab="admin">⚙ <span>Панель админа</span></button>
-      </nav>
-
-      <div class="sidebar-bottom">
-        <div class="mini-avatar" id="sideAvatar">У</div>
-        <div class="side-user">
-          <b id="sideName">Ученик</b>
-          <small id="sideRole">Участник</small>
-        </div>
-        <button id="logout" title="Выйти">↪</button>
-      </div>
-    </aside>
-
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <div class="eyebrow">ТВОЙ ПУТЬ К ПОБЕДЕ</div>
-          <h2 id="pageTitle">Главная</h2>
-        </div>
-        <div class="top-actions">
-          <span class="pill">✦ Olympiad Academy</span>
-          <button class="avatar" id="topAvatar">У</button>
-        </div>
-      </header>
-
-      <section id="content"></section>
-      <footer>OLYMPIAD ACADEMY <span>Знания. Развитие. Победы.</span></footer>
-    </main>
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>
+      <label>Электронная почта<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+      <label>Пароль<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Не менее 6 символов"></label>
+      <div id="authError" class="error hidden"></div>
+      <button class="primary full" type="submit" id="authSubmit">Войти</button>
+    </form>
+    <p class="fine">Демо-версия: данные хранятся только в этом браузере. Для реальных аккаунтов потребуется серверная авторизация.</p>
+  </section>
+</div>
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand"><img class="sidebar-logo" src="logo.png" alt="Olympiad Academy"></div>
+    <nav id="nav">
+      <button class="nav-item active" data-tab="home">⌂ <span>Главная</span></button>
+      <button class="nav-item" data-tab="profile">◉ <span>Профиль</span></button>
+      <button class="nav-item" data-tab="subjects">▦ <span>Предметы</span></button>
+      <button class="nav-item" data-tab="ai">✧ <span>ИИ-помощник</span></button>
+      <button class="nav-item" data-tab="prep">♜ <span>Подготовка</span></button>
+      <button class="nav-item admin-only hidden" data-tab="admin">⚙ <span>Панель админа</span></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="mini-avatar" id="sideAvatar">У</div><div class="side-user"><b id="sideName">Ученик</b><small id="sideRole">Участник</small></div><button id="logout" title="Выйти">↪</button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">ТВОЙ ПУТЬ К ПОБЕДЕ</div><h2 id="pageTitle">Главная</h2></div><div class="top-actions"><span class="pill">✦ Olympiad Academy</span><button class="avatar" id="topAvatar">У</button></div></header>
+    <section id="content"></section>
+    <footer>OLYMPIAD ACADEMY <span>Знания. Развитие. Победы.</span></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>
