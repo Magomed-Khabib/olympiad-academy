@@ -1,3 +1,4 @@
+
 {
   "name": "olympiad-academy-server",
   "version": "1.0.0",
@@ -10,6 +11,7 @@
     "node": ">=20"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "pg": "^8.16.3"
