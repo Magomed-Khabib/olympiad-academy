@@ -2,34 +2,18 @@
 @media(max-width:1100px){.app-shell{grid-template-columns:230px minmax(0,1fr)}.content-area,.page-heading{padding-left:22px;padding-right:22px}.topbar{padding:0 22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.home-top,.chat-layout{grid-template-columns:1fr}.chat-history{max-height:520px}.side-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar{padding-left:10px;padding-right:10px}.brand-title{font-size:19px}.nav-item{font-size:12px;gap:9px}}
 @media(max-width:720px){.auth-shell{grid-template-columns:1fr}.auth-brand{padding:20px 22px;min-height:180px}.brand-name{font-size:26px}.auth-mountain{font-size:100px;bottom:10px}.auth-quote{display:none}.auth-main{padding:18px}.auth-card{padding:24px}.app-shell{display:block}.sidebar{position:relative;height:auto;min-height:0;padding:12px;overflow:visible}.brand{padding:0 5px 12px;border:0}.brand-emblem{font-size:32px}.brand-title{font-size:17px}.brand-tagline{margin-top:5px}.sidebar-bottom{display:none}.nav-list{padding-top:7px;display:flex;flex-direction:row;overflow:auto;gap:5px}.nav-item{flex:0 0 auto;padding:9px 11px;font-size:11px;gap:6px}.nav-item span{font-size:16px;width:auto}.topbar{height:auto;padding:12px 14px;flex-wrap:wrap}.search-wrap{width:100%;order:2}.top-actions{margin-left:auto}.top-actions .bell,.top-actions>div,.logout-btn{display:none}.page-heading{padding:20px 15px 12px}.page-heading h1{font-size:24px}.date-chip{display:none}.content-area{padding:0 14px 20px;min-height:0}.footer{padding:14px}.stats,.two-col,.three-col,.home-top,.chat-layout{grid-template-columns:1fr}.stat-mini{grid-template-columns:1fr 1fr}.hero>*{max-width:88%}.hero h2{font-size:22px}.bar-row{grid-template-columns:85px 1fr 32px}.side-stack{grid-template-columns:1fr}.chat-panel{min-height:520px}.chat-history{max-height:55vh;padding:12px}.message{max-width:100%}.chat-compose{padding:10px}.profile-top{align-items:flex-start}.toolbar{flex-wrap:wrap}.toolbar input{width:100%}}
 
-/* Золотая обводка эмблемы Olympiad Academy */
-.brand-emblem {
+
+.brand-emblem,
+.auth-brand .brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
-  flex: 0 0 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--gold);
+  border: 2px solid #d9b85f;
   border-radius: 50%;
+  color: #f1d995;
   font-size: 30px;
   line-height: 1;
-  color: var(--gold2);
-  background: rgba(217, 184, 95, 0.08);
-  box-shadow: 0 0 0 3px rgba(217, 184, 95, 0.12);
-}
-
-.auth-brand .brand-mark {
-  width: 66px;
-  height: 66px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  font-size: 38px;
-  line-height: 1;
-  color: var(--gold2);
-  background: rgba(217, 184, 95, 0.08);
-  box-shadow: 0 0 0 4px rgba(217, 184, 95, 0.12);
+  flex-shrink: 0;
 }
