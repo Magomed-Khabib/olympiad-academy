@@ -1,4 +1,5 @@
 const $=id=>document.getElementById(id);
+const API_BASE = 'https://olympiad-academy-server.onrender.com';
 const STORE='oa_demo_v2';
 const emptyDB=()=>({users:[],codes:[],session:null,plans:{},chats:{}});
 let db;
