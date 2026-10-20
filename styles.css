@@ -29,3 +29,16 @@
   box-shadow: none;
   flex-shrink: 0;
 }
+
+.auth-brand img.brand-mark,
+.sidebar img.brand-emblem {
+  display: block !important;
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-size: 0 !important;
+}
