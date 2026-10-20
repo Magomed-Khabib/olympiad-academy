@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ru">
 <head>
@@ -11,36 +12,47 @@
 <body>
   <div id="auth" class="auth-shell">
     <aside class="auth-brand">
-      <div class="brand-mark">♧</div>
+      <img class="brand-mark" src="logo.png" alt="Olympiad Academy">
       <div class="brand-name">Olympiad<br>Academy</div>
       <div class="brand-motto">Знания · Развитие · Победы</div>
       <div class="auth-mountain" aria-hidden="true">◆</div>
       <div class="auth-quote">Образование — это ключ, который открывает двери к большим возможностям.</div>
     </aside>
+
     <main class="auth-main">
       <section class="auth-card">
         <div class="eyebrow">OLYMPIAD ACADEMY</div>
         <h1 id="authTitle">Добро пожаловать!</h1>
         <p id="authSubtitle" class="muted">Войди в аккаунт, чтобы продолжить обучение.</p>
+
         <div class="auth-tabs">
           <button id="loginSwitch" class="auth-tab active" type="button">Вход</button>
           <button id="registerSwitch" class="auth-tab" type="button">Регистрация</button>
         </div>
+
         <form id="authForm">
           <div id="registerFields" class="hidden">
             <label>ФИО<input id="fullName" autocomplete="name" placeholder="Имя и фамилия"></label>
             <label>Школа<input id="school" placeholder="Название школы"></label>
             <div class="form-row">
-              <label>Класс<select id="grade"><option value="">Выбери</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select></label>
+              <label>Класс
+                <select id="grade">
+                  <option value="">Выбери</option>
+                  <option>5</option><option>6</option><option>7</option>
+                  <option>8</option><option>9</option><option>10</option><option>11</option>
+                </select>
+              </label>
               <label>Буква<input id="classLetter" maxlength="2" placeholder="А"></label>
             </div>
             <label>Код участника / приглашения<input id="participantCode" autocomplete="off" placeholder="OA-XXXXX"></label>
           </div>
+
           <label>Email<input id="email" type="email" autocomplete="username" required placeholder="name@example.com"></label>
           <label>Пароль<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Не менее 6 символов"></label>
           <div id="authError" class="form-error hidden" role="alert"></div>
           <button id="authSubmit" class="primary full" type="submit">Войти →</button>
         </form>
+
         <p class="fine">Учись последовательно. Достигай большего.</p>
       </section>
     </main>
@@ -49,9 +61,13 @@
   <div id="app" class="app-shell hidden">
     <aside class="sidebar">
       <a class="brand" href="#" aria-label="Olympiad Academy">
-        <div class="brand-emblem">♧</div>
-        <div><div class="brand-title">Olympiad<br>Academy</div><div class="brand-tagline">Знания · Развитие · Победы</div></div>
+        <img class="brand-emblem" src="logo.png" alt="Olympiad Academy">
+        <div>
+          <div class="brand-title">Olympiad<br>Academy</div>
+          <div class="brand-tagline">Знания · Развитие · Победы</div>
+        </div>
       </a>
+
       <nav class="nav-list" aria-label="Основная навигация">
         <button class="nav-item active" data-tab="home"><span>⌂</span>Главная</button>
         <button class="nav-item" data-tab="profile"><span>♙</span>Профиль</button>
@@ -60,21 +76,45 @@
         <button class="nav-item" data-tab="prep"><span>↗</span>Подготовка</button>
         <button class="nav-item admin-only hidden" data-tab="admin"><span>♢</span>Панель администратора</button>
       </nav>
+
       <div class="sidebar-bottom">
-        <div class="bit-art"><div class="bit-antenna"></div><div class="bit-face"><i></i><i></i><b>⌣</b></div><div class="bit-body">✦</div></div>
+        <div class="bit-art">
+          <div class="bit-antenna"></div>
+          <div class="bit-face"><i></i><i></i><b>⌣</b></div>
+          <div class="bit-body">✦</div>
+        </div>
         <div class="bit-greeting">Привет! Я Бит.<br>Готов помочь тебе<br>в учёбе! ✨</div>
       </div>
     </aside>
+
     <main class="main-area">
       <header class="topbar">
         <div class="search-wrap"><span>⌕</span><input id="siteSearch" placeholder="Поиск по сайту..."></div>
-        <div class="top-actions"><span class="bell">♧</span><button id="topAvatar" class="avatar" aria-label="Открыть профиль">У</button><div><strong id="topName">Ученик</strong><small id="topRole">Участник</small></div><button id="logout" class="logout-btn">Выйти ↗</button></div>
+        <div class="top-actions">
+          <span class="bell">♧</span>
+          <button id="topAvatar" class="avatar" aria-label="Открыть профиль">У</button>
+          <div>
+            <strong id="topName">Ученик</strong>
+            <small id="topRole">Участник</small>
+          </div>
+          <button id="logout" class="logout-btn">Выйти ↗</button>
+        </div>
       </header>
-      <div class="page-heading"><div><div class="eyebrow">ТВОЯ АКАДЕМИЯ</div><h1 id="pageTitle">Главная</h1></div><div class="date-chip">✦ Учись каждый день</div></div>
+
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">ТВОЯ АКАДЕМИЯ</div>
+          <h1 id="pageTitle">Главная</h1>
+        </div>
+        <div class="date-chip">✦ Учись каждый день</div>
+      </div>
+
       <section id="content" class="content-area"></section>
       <footer class="footer">Olympiad Academy <span>·</span> Знания · Развитие · Победы</footer>
     </main>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
+```
