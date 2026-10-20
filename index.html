@@ -1,240 +1,80 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#690b10"><title>Olympiad Academy</title>
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" href="logo.png"><link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#073d2b">
+  <title>Olympiad Academy</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="auth" class="auth-wrap">
-  <section class="auth-brand"><img class="auth-logo" src="logo.png" alt="Olympiad Academy — золотая академическая эмблема"><p>Знания. Развитие. Победы.</p><div class="mountain">▲</div></section>
-  <section class="auth-card">
-    <div class="eyebrow">АКАДЕМИЯ БУДУЩИХ ПОБЕДИТЕЛЕЙ</div><h1 id="authTitle">Вход в аккаунт</h1><p class="muted">Продолжай свой путь к новым достижениям.</p>
-    <div class="auth-switch"><button class="switch active" id="loginSwitch">Войти</button><button class="switch" id="registerSwitch">Регистрация</button></div>
-    <form id="authForm">
-      <div id="registerFields" class="hidden">
-        <label>ФИО<input id="fullName" autocomplete="name" placeholder="Фамилия Имя Отчество"></label>
-        <div class="two"><label>Школа<input id="school" placeholder="Название школы"></label><label>Класс<input id="grade" placeholder="Например, 8"></label></div>
-        <label>Буква класса<input id="classLetter" maxlength="2" placeholder="Например, А"></label>
-        <label>Код участника<input id="participantCode" placeholder="Код выдаёт администратор"></label>
+  <div id="auth" class="auth-shell">
+    <aside class="auth-brand">
+      <div class="brand-mark">♧</div>
+      <div class="brand-name">Olympiad<br>Academy</div>
+      <div class="brand-motto">Знания · Развитие · Победы</div>
+      <div class="auth-mountain" aria-hidden="true">◆</div>
+      <div class="auth-quote">Образование — это ключ, который открывает двери к большим возможностям.</div>
+    </aside>
+    <main class="auth-main">
+      <section class="auth-card">
+        <div class="eyebrow">OLYMPIAD ACADEMY</div>
+        <h1 id="authTitle">Добро пожаловать!</h1>
+        <p id="authSubtitle" class="muted">Войди в аккаунт, чтобы продолжить обучение.</p>
+        <div class="auth-tabs">
+          <button id="loginSwitch" class="auth-tab active" type="button">Вход</button>
+          <button id="registerSwitch" class="auth-tab" type="button">Регистрация</button>
+        </div>
+        <form id="authForm">
+          <div id="registerFields" class="hidden">
+            <label>ФИО<input id="fullName" autocomplete="name" placeholder="Имя и фамилия"></label>
+            <label>Школа<input id="school" placeholder="Название школы"></label>
+            <div class="form-row">
+              <label>Класс<select id="grade"><option value="">Выбери</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select></label>
+              <label>Буква<input id="classLetter" maxlength="2" placeholder="А"></label>
+            </div>
+            <label>Код участника / приглашения<input id="participantCode" autocomplete="off" placeholder="OA-XXXXX"></label>
+          </div>
+          <label>Email<input id="email" type="email" autocomplete="username" required placeholder="name@example.com"></label>
+          <label>Пароль<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Не менее 6 символов"></label>
+          <div id="authError" class="form-error hidden" role="alert"></div>
+          <button id="authSubmit" class="primary full" type="submit">Войти →</button>
+        </form>
+        <p class="fine">Учись последовательно. Достигай большего.</p>
+      </section>
+    </main>
+  </div>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Olympiad Academy">
+        <div class="brand-emblem">♧</div>
+        <div><div class="brand-title">Olympiad<br>Academy</div><div class="brand-tagline">Знания · Развитие · Победы</div></div>
+      </a>
+      <nav class="nav-list" aria-label="Основная навигация">
+        <button class="nav-item active" data-tab="home"><span>⌂</span>Главная</button>
+        <button class="nav-item" data-tab="profile"><span>♙</span>Профиль</button>
+        <button class="nav-item" data-tab="subjects"><span>▤</span>Предметы</button>
+        <button class="nav-item" data-tab="ai"><span>✧</span>ИИ-помощник Бит</button>
+        <button class="nav-item" data-tab="prep"><span>↗</span>Подготовка</button>
+        <button class="nav-item admin-only hidden" data-tab="admin"><span>♢</span>Панель администратора</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="bit-art"><div class="bit-antenna"></div><div class="bit-face"><i></i><i></i><b>⌣</b></div><div class="bit-body">✦</div></div>
+        <div class="bit-greeting">Привет! Я Бит.<br>Готов помочь тебе<br>в учёбе! ✨</div>
       </div>
-      <label>Электронная почта<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
-      <label>Пароль<input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Не менее 6 символов"></label>
-      <div id="authError" class="error hidden"></div>
-      <button class="primary full" type="submit" id="authSubmit">Войти</button>
-    </form>
-    <p class="fine">Демо-версия: данные хранятся только в этом браузере. Для реальных аккаунтов потребуется серверная авторизация.</p>
-  </section>
-</div>
-<div id="app" class="app hidden">
-  <aside class="sidebar">
-    <div class="brand"><img class="sidebar-logo" src="logo.png" alt="Olympiad Academy"></div>
-    <nav id="nav">
-      <button class="nav-item active" data-tab="home">⌂ <span>Главная</span></button>
-      <button class="nav-item" data-tab="profile">◉ <span>Профиль</span></button>
-      <button class="nav-item" data-tab="subjects">▦ <span>Предметы</span></button>
-      <button class="nav-item" data-tab="ai">✧ <span>ИИ-помощник</span></button>
-      <button class="nav-item" data-tab="prep">♜ <span>Подготовка</span></button>
-      <button class="nav-item admin-only hidden" data-tab="admin">⚙ <span>Панель админа</span></button>
-    </nav>
-    <div class="sidebar-bottom"><div class="mini-avatar" id="sideAvatar">У</div><div class="side-user"><b id="sideName">Ученик</b><small id="sideRole">Участник</small></div><button id="logout" title="Выйти">↪</button></div>
-  </aside>
-  <main class="main">
-    <header class="topbar"><div><div class="eyebrow">ТВОЙ ПУТЬ К ПОБЕДЕ</div><h2 id="pageTitle">Главная</h2></div><div class="top-actions"><span class="pill">✦ Olympiad Academy</span><button class="avatar" id="topAvatar">У</button></div></header>
-    <section id="content"></section>
-    <footer>OLYMPIAD ACADEMY <span>Знания. Развитие. Победы.</span></footer>
-  </main>
-</div>
-<script src="app.js"></script>
-</body></html>
-
-
-/* ==========================================
-   OLYMPIAD ACADEMY — PREMIUM ANIMATIONS
-   Медленные золотые эффекты
-   ========================================== */
-
-.auth-brand {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-/* Слои с золотыми бликами */
-.auth-brand::before,
-.auth-brand::after {
-  content: "";
-  position: absolute;
-  inset: -30%;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Медленно движущийся золотой блик */
-.auth-brand::before {
-  background: linear-gradient(
-    115deg,
-    transparent 35%,
-    rgba(255, 215, 120, 0.025) 42%,
-    rgba(255, 225, 155, 0.15) 49%,
-    rgba(255, 215, 120, 0.035) 56%,
-    transparent 64%
-  );
-  transform: translateX(-65%);
-  animation: goldShimmer 12s ease-in-out infinite;
-}
-
-/* Мягкие световые круги */
-.auth-brand::after {
-  background:
-    radial-gradient(
-      circle at 18% 22%,
-      rgba(255, 205, 100, 0.13),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 78% 72%,
-      rgba(255, 190, 80, 0.09),
-      transparent 28%
-    );
-  animation: ambientGlow 10s ease-in-out infinite alternate;
-}
-
-/* Золотая эмблема */
-.auth-logo {
-  position: relative;
-  animation: logoFloat 7s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 204, 95, 0.13));
-  transform-origin: center;
-  will-change: transform, filter;
-}
-
-/* Круговая декоративная фигура */
-.mountain {
-  animation: mountainGlow 8s ease-in-out infinite;
-  transform-origin: center bottom;
-}
-
-/* Карточка авторизации */
-.auth-card {
-  animation: cardEntrance 1.2s cubic-bezier(.2, .7, .25, 1) both;
-}
-
-/* Переключатели и кнопки */
-.auth-switch .switch,
-.primary {
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease,
-    box-shadow 0.5s ease,
-    transform 0.4s ease;
-}
-
-.auth-switch .switch:hover {
-  transform: translateY(-1px);
-}
-
-.primary:hover {
-  box-shadow:
-    0 8px 24px rgba(105, 11, 16, 0.20),
-    0 0 14px rgba(225, 174, 73, 0.12);
-  transform: translateY(-2px);
-}
-
-.primary:active {
-  transform: translateY(0) scale(0.99);
-}
-
-/* Поля ввода */
-.auth-card input {
-  transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    background-color 0.35s ease;
-}
-
-.auth-card input:focus {
-  border-color: #c89a45;
-  box-shadow: 0 0 0 3px rgba(200, 154, 69, 0.12);
-  outline: none;
-}
-
-/* Плавное движение золотого блика */
-@keyframes goldShimmer {
-  0%, 15% {
-    transform: translateX(-65%);
-    opacity: 0.3;
-  }
-  55% {
-    opacity: 1;
-  }
-  85%, 100% {
-    transform: translateX(65%);
-    opacity: 0.3;
-  }
-}
-
-/* Атмосферное освещение */
-@keyframes ambientGlow {
-  from {
-    opacity: 0.45;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-}
-
-/* Едва заметное парение логотипа */
-@keyframes logoFloat {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-    filter: drop-shadow(0 0 8px rgba(255, 204, 95, 0.13));
-  }
-  50% {
-    transform: translateY(-5px) scale(1.008);
-    filter: drop-shadow(0 0 17px rgba(255, 204, 95, 0.30));
-  }
-}
-
-/* Подсветка декоративного элемента */
-@keyframes mountainGlow {
-  0%, 100% {
-    opacity: 0.65;
-    filter: drop-shadow(0 0 2px rgba(255, 205, 105, 0.08));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 10px rgba(255, 205, 105, 0.24));
-  }
-}
-
-/* Карточка плавно появляется */
-@keyframes cardEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Уважение системной настройки уменьшения движения */
-@media (prefers-reduced-motion: reduce) {
-  .auth-brand::before,
-  .auth-brand::after,
-  .auth-logo,
-  .mountain,
-  .auth-card {
-    animation: none !important;
-  }
-
-  .auth-switch .switch,
-  .primary,
-  .auth-card input {
-    transition: none !important;
-  }
-}
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="search-wrap"><span>⌕</span><input id="siteSearch" placeholder="Поиск по сайту..."></div>
+        <div class="top-actions"><span class="bell">♧</span><button id="topAvatar" class="avatar" aria-label="Открыть профиль">У</button><div><strong id="topName">Ученик</strong><small id="topRole">Участник</small></div><button id="logout" class="logout-btn">Выйти ↗</button></div>
+      </header>
+      <div class="page-heading"><div><div class="eyebrow">ТВОЯ АКАДЕМИЯ</div><h1 id="pageTitle">Главная</h1></div><div class="date-chip">✦ Учись каждый день</div></div>
+      <section id="content" class="content-area"></section>
+      <footer class="footer">Olympiad Academy <span>·</span> Знания · Развитие · Победы</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

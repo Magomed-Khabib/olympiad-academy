@@ -1,9 +1,10 @@
 {
   "name": "Olympiad Academy",
   "short_name": "Olympiad",
-  "start_url": "./index.html",
+  "description": "Платформа для подготовки к олимпиадам",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#fbf8f1",
-  "theme_color": "#690b10",
-  "description": "Платформа подготовки к олимпиадам"
+  "background_color": "#f7f6ef",
+  "theme_color": "#073d2b",
+  "icons": []
 }
