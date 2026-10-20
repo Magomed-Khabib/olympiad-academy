@@ -107,3 +107,132 @@ select:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
 } 
+
+/* === VISIBLE GOLD ANIMATION FIX === */
+
+.auth-brand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Световые эффекты поверх фона, но под содержимым */
+.auth-brand::before,
+.auth-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Яркий движущийся золотой блик */
+.auth-brand::before {
+  inset: -40% -80%;
+  background: linear-gradient(
+    110deg,
+    transparent 43%,
+    rgba(255, 215, 120, 0.02) 47%,
+    rgba(255, 220, 140, 0.30) 50%,
+    rgba(255, 230, 170, 0.08) 52%,
+    transparent 57%
+  );
+  transform: translateX(-45%);
+  animation: visibleGoldSweep 7s ease-in-out infinite;
+}
+
+/* Движущиеся золотые частицы */
+.auth-brand::after {
+  background-image:
+    radial-gradient(circle, rgba(255,220,145,.95) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,195,85,.8) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(255,235,185,.8) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,205,100,.65) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,225,160,.8) 0 1px, transparent 2px);
+  background-size:
+    173px 191px,
+    227px 239px,
+    283px 211px,
+    319px 271px,
+    197px 307px;
+  background-position:
+    20px 30px,
+    80px 110px,
+    150px 50px,
+    40px 170px,
+    210px 130px;
+  animation: visibleParticles 16s linear infinite;
+  opacity: .8;
+}
+
+/* Логотип и текст всегда поверх эффектов */
+.auth-brand > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Более заметное свечение эмблемы */
+.auth-logo {
+  animation: visibleLogoGlow 4s ease-in-out infinite;
+  will-change: filter, transform;
+}
+
+/* Золотой блик проходит через панель */
+@keyframes visibleGoldSweep {
+  0% {
+    transform: translateX(-45%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  65% {
+    opacity: .9;
+  }
+  100% {
+    transform: translateX(45%);
+    opacity: 0;
+  }
+}
+
+/* Частицы медленно перемещаются вверх */
+@keyframes visibleParticles {
+  from {
+    background-position:
+      20px 30px,
+      80px 110px,
+      150px 50px,
+      40px 170px,
+      210px 130px;
+  }
+  to {
+    background-position:
+      65px -180px,
+      10px -130px,
+      220px -190px,
+      110px -100px,
+      160px -170px;
+  }
+}
+
+/* Пульсирующее золотое свечение */
+@keyframes visibleLogoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255,205,95,.15));
+    transform: translateY(0);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 12px rgba(255,205,95,.65))
+      drop-shadow(0 0 25px rgba(255,190,70,.22));
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-brand::before,
+  .auth-brand::after,
+  .auth-logo {
+    animation: none !important;
+  }
+}
