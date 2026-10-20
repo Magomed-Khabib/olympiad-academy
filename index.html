@@ -47,3 +47,194 @@
 </div>
 <script src="app.js"></script>
 </body></html>
+
+
+/* ==========================================
+   OLYMPIAD ACADEMY — PREMIUM ANIMATIONS
+   Медленные золотые эффекты
+   ========================================== */
+
+.auth-brand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Слои с золотыми бликами */
+.auth-brand::before,
+.auth-brand::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Медленно движущийся золотой блик */
+.auth-brand::before {
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 215, 120, 0.025) 42%,
+    rgba(255, 225, 155, 0.15) 49%,
+    rgba(255, 215, 120, 0.035) 56%,
+    transparent 64%
+  );
+  transform: translateX(-65%);
+  animation: goldShimmer 12s ease-in-out infinite;
+}
+
+/* Мягкие световые круги */
+.auth-brand::after {
+  background:
+    radial-gradient(
+      circle at 18% 22%,
+      rgba(255, 205, 100, 0.13),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 78% 72%,
+      rgba(255, 190, 80, 0.09),
+      transparent 28%
+    );
+  animation: ambientGlow 10s ease-in-out infinite alternate;
+}
+
+/* Золотая эмблема */
+.auth-logo {
+  position: relative;
+  animation: logoFloat 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 204, 95, 0.13));
+  transform-origin: center;
+  will-change: transform, filter;
+}
+
+/* Круговая декоративная фигура */
+.mountain {
+  animation: mountainGlow 8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Карточка авторизации */
+.auth-card {
+  animation: cardEntrance 1.2s cubic-bezier(.2, .7, .25, 1) both;
+}
+
+/* Переключатели и кнопки */
+.auth-switch .switch,
+.primary {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.5s ease,
+    transform 0.4s ease;
+}
+
+.auth-switch .switch:hover {
+  transform: translateY(-1px);
+}
+
+.primary:hover {
+  box-shadow:
+    0 8px 24px rgba(105, 11, 16, 0.20),
+    0 0 14px rgba(225, 174, 73, 0.12);
+  transform: translateY(-2px);
+}
+
+.primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Поля ввода */
+.auth-card input {
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.auth-card input:focus {
+  border-color: #c89a45;
+  box-shadow: 0 0 0 3px rgba(200, 154, 69, 0.12);
+  outline: none;
+}
+
+/* Плавное движение золотого блика */
+@keyframes goldShimmer {
+  0%, 15% {
+    transform: translateX(-65%);
+    opacity: 0.3;
+  }
+  55% {
+    opacity: 1;
+  }
+  85%, 100% {
+    transform: translateX(65%);
+    opacity: 0.3;
+  }
+}
+
+/* Атмосферное освещение */
+@keyframes ambientGlow {
+  from {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* Едва заметное парение логотипа */
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 204, 95, 0.13));
+  }
+  50% {
+    transform: translateY(-5px) scale(1.008);
+    filter: drop-shadow(0 0 17px rgba(255, 204, 95, 0.30));
+  }
+}
+
+/* Подсветка декоративного элемента */
+@keyframes mountainGlow {
+  0%, 100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 2px rgba(255, 205, 105, 0.08));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 205, 105, 0.24));
+  }
+}
+
+/* Карточка плавно появляется */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Уважение системной настройки уменьшения движения */
+@media (prefers-reduced-motion: reduce) {
+  .auth-brand::before,
+  .auth-brand::after,
+  .auth-logo,
+  .mountain,
+  .auth-card {
+    animation: none !important;
+  }
+
+  .auth-switch .switch,
+  .primary,
+  .auth-card input {
+    transition: none !important;
+  }
+}
