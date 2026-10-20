@@ -17,3 +17,15 @@
   line-height: 1;
   flex-shrink: 0;
 }
+
+.brand-mark,
+.brand-emblem {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  flex-shrink: 0;
+}
